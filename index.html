@@ -33,3 +33,56 @@
   transform-origin: bottom right !important;
 }
 </style>
+<style>
+.vfrc-launcher {
+  transform: scale(1.4) !important;
+  transform-origin: bottom right !important;
+}
+</style>
+<div id="noor-chat-popup">
+  <button onclick="document.getElementById('noor-chat-popup').style.display='none'" class="close-btn">×</button>
+
+  <div class="popup-header">
+    🌿 NoorNestLiving
+  </div>
+
+  <div class="popup-body">
+    Hi there! I'm the NoorNestLiving Assistant. I can help with product questions, sizing guidance, shipping information, and organization solutions.
+  </div>
+</div>
+
+<style>
+#noor-chat-popup{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:280px;
+  background:white;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,.15);
+  padding:16px;
+  z-index:9999;
+  font-family:Arial,sans-serif;
+}
+
+.popup-header{
+  font-weight:700;
+  margin-bottom:8px;
+  color:#2f4f2f;
+}
+
+.popup-body{
+  font-size:14px;
+  line-height:1.5;
+}
+
+.close-btn{
+  position:absolute;
+  top:8px;
+  right:10px;
+  border:none;
+  background:none;
+  font-size:18px;
+  cursor:pointer;
+}
+</style>
