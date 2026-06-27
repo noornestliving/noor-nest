@@ -1,17 +1,13 @@
 {
   "cleanUrls": true,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/sitemap.xml",
-      "dest": "/public/sitemap.xml"
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
     },
     {
-      "src": "/googlec636a9c7e28dc776.html",
-      "dest": "/public/googlec636a9c7e28dc776.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/googlec636a9c7e28dc776.html",
+      "destination": "/googlec636a9c7e28dc776.html"
     }
   ]
 }
