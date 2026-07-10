@@ -2,105 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Critical for mobile viewport scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Noor Nest Living | Premium Home Organization Solutions</title>
+    <title>Noor Nest Living</title>
 
     <style>
-        /* Base configuration resets */
+        /* Essential structure rules to ensure the website is always visible */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            overflow-x: hidden;
+            min-height: 100vh;
+            background-color: #ffffff !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
+        
         * {
             box-sizing: border-box;
         }
 
         /* ========================================================
-           1. DEFAULT LAPTOP & DESKTOP STYLING 
+           UNIFIED RESPONSIVE WRAPPER (Works on Laptop & Phone)
            ======================================================== */
-        .canva-wrapper {
-            position: relative; 
-            width: 100%; 
-            height: 0; 
-            padding-top: 281.1127%; /* Your exact desktop aspect ratio */
-            box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); 
-            margin: 1.6em auto 0.9em auto; 
-            max-width: 1200px; /* Centers the content nicely on large laptop screens */
-            overflow: hidden; 
-            border-radius: 8px; 
-            will-change: transform;
-            display: block !important; /* Fixes laptop visibility block */
+        .global-canva-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1200px; /* Nicely centers the page content on wide desktop screens */
+            margin: 0 auto;
+            /* Laptop aspect-ratio fallback sizing rule */
+            height: auto;
+            padding-top: 281.1127%; 
+            overflow: hidden;
+            display: block !important;
         }
 
-        .canva-wrapper iframe {
-            position: absolute; 
-            width: 100%; 
-            height: 100%; 
-            top: 0; 
-            left: 0; 
-            border: none; 
+        .global-canva-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
             padding: 0;
             margin: 0;
             display: block !important;
         }
 
-        .brand-link {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            text-decoration: none;
-            color: #000;
-        }
-
         /* ========================================================
-           2. MOBILE DEVICE OVERRIDES (< 768px Width)
+           AUTOMATED PHONE SCALE RULES (< 768px screen width)
            ======================================================== */
         @media screen and (max-width: 768px) {
             html, body {
-                height: 100dvh !important; /* Locks screen limits safely on phones */
-                width: 100vw !important;
-                overflow: hidden !important; 
-                position: fixed; 
+                overflow-x: hidden !important;
             }
 
-            /* Strips out aspect ratio padding so the page fills up mobile screens inside Vercel */
-            .canva-wrapper {
-                height: 100dvh !important; 
-                width: 100vw !important;
-                max-width: 100vw !important;
+            .global-canva-wrapper {
+                /* Destroys the desktop ratio compression rule so it doesn't shrink into an icon */
                 padding-top: 0 !important; 
-                margin: 0 !important;
-                border-radius: 0px !important;
-                box-shadow: none !important;
+                height: 100vh !important; /* Forces the box to take up the full phone screen height */
+                width: 100vw !important;
             }
 
-            .canva-wrapper iframe {
+            .global-canva-wrapper iframe {
+                position: relative !important;
                 height: 100% !important;
                 width: 100% !important;
-                object-fit: contain !important;
-            }
-
-            /* Clear out extra text link footers on mobile screens */
-            .brand-link {
-                display: none !important;
+                object-fit: contain !important; /* Aligns the presentation perfectly within the mobile display bounds */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Container scales globally on Vercel without page redirects -->
-    <div class="canva-wrapper"> 
-        <iframe loading="lazy" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe> 
-    </div> 
-    
-    <a class="brand-link" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
+    <!-- Single, robust structure that loads on all devices without separate hide conditions -->
+    <div class="global-canva-wrapper">
+        <iframe loading="eager" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+    </div>
 
 </body>
 </html>
