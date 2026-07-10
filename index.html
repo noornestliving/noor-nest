@@ -2,165 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Mandatory tag to make mobile screens behave differently than desktop layouts -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Noor Nest Living | Premium Home Organization Solutions</title>
 
     <style>
-        /* Global Page Resets */
+        /* Base page rules to kill horizontal side-scrolling or window gaps */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background-color: #fbf9f6; /* Minimalist premium background */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            color: #2c2c2c;
-            overflow-x: hidden;
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            overflow: hidden; /* Locks page scrollbars to the iframe container */
         }
         * {
             box-sizing: border-box;
         }
 
         /* ========================================================
-           1. DESKTOP ONLY LAYOUT (Renders perfectly on laptops)
+           1. DESKTOP VIEW SETTINGS (Loads on computers)
            ======================================================== */
-        @media screen and (min-width: 769px) {
-            .mobile-fallback-screen {
-                display: none !important; /* Hide mobile layout on desktops */
-            }
-            .desktop-canva-wrapper {
-                display: block;
-                width: 100%;
-                padding: 20px;
-            }
-            .canva-container {
-                position: relative; 
-                width: 100%; 
-                height: 0; 
-                padding-top: 281.1127%; 
-                box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
-                overflow: hidden; 
-                border-radius: 12px;
-            }
-            .canva-container iframe {
-                position: absolute; 
-                width: 100%; 
-                height: 100%; 
-                top: 0; 
-                left: 0; 
-                border: none;
-            }
-            .brand-link-desktop {
-                display: block;
-                text-align: center;
-                margin-top: 15px;
-                color: #777;
-                text-decoration: none;
-                font-size: 14px;
-            }
+        .canva-wrapper {
+            position: relative; 
+            width: 100%; 
+            height: 0; 
+            padding-top: 281.1127%; /* Your exact desktop aspect ratio parameter */
+            box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); 
+            margin-top: 1.6em; 
+            margin-bottom: 0.9em; 
+            overflow: hidden; 
+            border-radius: 8px; 
+            will-change: transform;
+        }
+
+        .canva-wrapper iframe {
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            top: 0; 
+            left: 0; 
+            border: none; 
+            padding: 0;
+            margin: 0;
+        }
+
+        .brand-link {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            color: #000;
         }
 
         /* ========================================================
-           2. MOBILE ONLY LAYOUT (Clean, secure setup for phone users)
+           2. MOBILE VIEW SETTINGS (Loads ONLY on phone screens)
            ======================================================== */
         @media screen and (max-width: 768px) {
-            .desktop-canva-wrapper {
-                display: none !important; /* Completely deletes the broken iframe on phone displays */
-            }
-            
-            .mobile-fallback-screen {
-                display: flex !important;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100vw;
-                min-height: 100vh;
-                padding: 30px 20px;
+            html, body {
+                height: 100dvh !important; /* Forces layout to fill dynamic mobile views */
+                width: 100vw !important;
+                position: fixed; /* Blocks background screen shifts */
             }
 
-            .mobile-content-card {
-                background: #ffffff;
-                padding: 40px 30px;
-                border-radius: 24px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-                max-width: 380px;
-                width: 100%;
-                text-align: center;
-                border: 1px solid #f0ede9;
+            /* Overwrites the fixed height block so it spreads fullscreen on phones */
+            .canva-wrapper {
+                height: 100dvh !important; 
+                width: 100vw !important;
+                padding-top: 0 !important; /* Destroys the desktop padding compression squeeze */
+                margin: 0 !important;
+                border-radius: 0px !important;
+                box-shadow: none !important;
             }
 
-            .mobile-brand-title {
-                font-size: 24px;
-                font-weight: 600;
-                letter-spacing: 1.5px;
-                text-transform: uppercase;
-                margin-bottom: 12px;
-                color: #1a1a1a;
+            /* Configures the iframe to fill out the Vercel mobile viewport neatly */
+            .canva-wrapper iframe {
+                position: relative !important;
+                height: 100% !important;
+                width: 100% !important;
+                object-fit: contain !important; /* Keeps your design crisp and centered on phones */
             }
 
-            .mobile-brand-divider {
-                width: 40px;
-                height: 2px;
-                background-color: #d4af37; /* Elegant gold accent divider line */
-                margin: 0 auto 24px auto;
-            }
-
-            .mobile-description {
-                font-size: 15px;
-                color: #666666;
-                line-height: 1.6;
-                margin-bottom: 35px;
-            }
-
-            .mobile-primary-button {
-                display: block;
-                background-color: #1a1a1a;
-                color: #ffffff;
-                padding: 16px 24px;
-                text-decoration: none;
-                border-radius: 40px;
-                font-weight: 600;
-                font-size: 15px;
-                letter-spacing: 0.5px;
-                box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-                transition: transform 0.2s ease;
-            }
-            
-            .mobile-primary-button:active {
-                transform: scale(0.98);
+            /* Hides the desktop link block on mobile screens */
+            .brand-link {
+                display: none !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 💻 SECTION A: LOADS EXCLUSIVELY ON DESKTOP COMPUTERS -->
-    <div class="desktop-canva-wrapper">
-        <div class="canva-container"> 
-            <iframe loading="lazy" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe> 
-        </div> 
-        <a class="brand-link-desktop" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
-    </div>
-
-
-    <!-- 📱 SECTION B: LOADS EXCLUSIVELY ON MOBILE PHONE USERS -->
-    <div class="mobile-fallback-screen" style="display: none;">
-        <div class="mobile-content-card">
-            
-            <h1 class="mobile-brand-title">Noor Nest Living</h1>
-            <div class="mobile-brand-divider"></div>
-            
-            <p class="mobile-description">
-                Discover our premium foldable fabric storage boxes, drawer organizers, and elegant home solutions.
-            </p>
-            
-            <!-- This direct link allows phone users to securely load the catalog fullscreen without any iframe errors -->
-            <a href="https://canva.com?utm_content=DAHMq9B5miU&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" class="mobile-primary-button" target="_blank" rel="noopener">
-                Open Mobile Catalog
-            </a>
-            
-        </div>
-    </div>
+    <!-- Responsive Container Structure -->
+    <div class="canva-wrapper"> 
+        <iframe loading="lazy" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe> 
+    </div> 
+    
+    <a class="brand-link" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
 
 </body>
 </html>
