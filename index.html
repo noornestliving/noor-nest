@@ -37,10 +37,25 @@
         *{ box-sizing:border-box; }
         img{ max-width:100%; height:auto; display:block; }
         iframe{ border:none; }
-      .canva-wrapper{ position:relative; width:100%; height:0; padding-top:281.1127%; overflow:hidden; }
-      .canva-wrapper iframe{ position:absolute; top:0; left:0; width:100%; height:100%; }
-      .brand-link{ display:block; padding:10px; text-align:center; text-decoration:none; color:#000; }
-        @media (max-width:768px){ html, body{ overflow-x:hidden; } *{ max-width:100vw; } img{ max-width:100%; } iframe{ max-width:100%; } }
+        
+        /* Desktop Aspect Ratio */
+        .canva-wrapper{ position:relative; width:100%; height:0; padding-top:281.1127%; overflow:hidden; }
+        .canva-wrapper iframe{ position:absolute; top:0; left:0; width:100%; height:100%; }
+        .brand-link{ display:block; padding:10px; text-align:center; text-decoration:none; color:#000; }
+        
+        /* Mobile Layout Modifications */
+        @media (max-width:768px){ 
+            html, body{ overflow-x:hidden; } 
+            *{ max-width:100vw; } 
+            img{ max-width:100%; } 
+            iframe{ max-width:100%; }
+            
+            /* Optimizes the Canva frame so it scales perfectly on mobile viewports */
+            .canva-wrapper {
+                height: 100vh; /* Fills the device screen height precisely */
+                padding-top: 0; /* Clears the desktop aspect ratio constraint */
+            }
+        }
     </style>
 </head>
 <body>
