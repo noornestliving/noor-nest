@@ -2,101 +2,125 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Required tag to make mobile screens behave differently than desktop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoorNestLiving</title>
 
     <style>
-        html, body { 
-            margin: 0; 
-            padding: 0; 
-            width: 100%; 
-            height: 100%; 
-            overflow-x: hidden; 
-            background: #fff; 
+        /* Base page resets */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        /* ========================================================
+           1. DESKTOP VIEW SETTINGS (Hidden on mobile screens)
+           ======================================================== */
+        .desktop-only-view {
+            display: block; /* Show on desktop */
+            width: 100%;
+            padding: 20px;
         }
         
-        * { 
-            box-sizing: border-box; 
-        }
-
-        /* Default configuration rule for standard desktop displays */
-        .canva-outer-wrapper {
-            width: 100%;
-            overflow: hidden;
-        }
-
         .canva-container {
             position: relative; 
             width: 100%; 
             height: 0; 
             padding-top: 281.1127%; 
             box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); 
-            margin-top: 1.6em; 
-            margin-bottom: 0.9em; 
-            border-radius: 8px; 
-            will-change: transform;
+            overflow: hidden; 
+            border-radius: 8px;
         }
-
         .canva-container iframe {
             position: absolute; 
             width: 100%; 
             height: 100%; 
             top: 0; 
             left: 0; 
-            border: none; 
-            padding: 0;
-            margin: 0;
+            border: none;
         }
 
-        .brand-link {
-            display: block;
+        /* ========================================================
+           2. MOBILE VIEW SETTINGS (Hidden on desktop screens)
+           ======================================================== */
+        .mobile-only-view {
+            display: none; /* Hide on desktop by default */
+            padding: 20px;
             text-align: center;
-            padding: 10px;
-            text-decoration: none;
-            color: #000;
-            font-family: Arial, sans-serif;
         }
 
-        /* =======================================================
-           ADVANCED TARGET FORCE-SCALE OVERRIDE FOR MOBILE PHONES
-           ======================================================= */
-        @media screen and (max-width: 480px) {
-            .canva-outer-wrapper {
-                width: 100vw;
-                height: 90vh;
-                position: relative;
-                overflow: hidden;
+        /* Custom mobile design classes to style your phone layout elements */
+        .mobile-hero-title {
+            font-size: 28px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+        .mobile-subtitle {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .mobile-button {
+            display: inline-block;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+
+        /* ========================================================
+           3. RESPONSIVE BREAKPOINT SWITCH (Kicks in under 768px width)
+           ======================================================== */
+        @media screen and (max-width: 768px) {
+            /* Wipe out the desktop Canva view on phones completely */
+            .desktop-only-view {
+                display: none !important;
             }
 
-            /* Zoom scale to expand the shrinking Canva embed framework */
-            .canva-container {
-                width: 210% !important; 
-                height: 210% !important; 
-                padding-top: 0 !important;
-                position: absolute;
-                top: -5%;
-                left: -55%; 
-                transform: scale(0.48); 
-                transform-origin: top center;
-            }
-            
-            .canva-container iframe {
-                width: 100% !important;
-                height: 100% !important;
+            /* Turn on your custom mobile layout on phones */
+            .mobile-only-view {
+                display: block !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Wrapped outer shell handles scaling calculation boundaries -->
-    <div class="canva-outer-wrapper">
+    <!-- 🌟 THIS CODE LOADS ONLY ON DESKTOP COMPUTERS -->
+    <div class="desktop-only-view">
         <div class="canva-container"> 
-            <iframe loading="lazy" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe> 
+            <iframe loading="lazy" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe> 
         </div> 
+        <a style="display:block; text-align:center; margin-top:10px; color:#000;" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
     </div>
-    
-    <a class="brand-link" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
+
+
+    <!-- 📱 THIS CODE LOADS ONLY ON MOBILE PHONE USERS -->
+    <div class="mobile-only-view">
+        
+        <!-- Add your custom mobile layout headings, images, and text below -->
+        <h1 class="mobile-hero-title">Welcome to Noor Nest Living</h1>
+        <p class="mobile-subtitle">Premium Home Organization Solutions designed to bring comfort and order to your spaces.</p>
+        
+        <!-- Example image template tag for phone screens -->
+        <!-- <img src="your-mobile-image.png" style="width:100%; border-radius:8px;" alt="Mobile Content"> -->
+
+        <a href="https://canva.com" class="mobile-button" target="_blank" rel="noopener">
+            View Full Catalog
+        </a>
+        
+    </div>
 
 </body>
 </html>
