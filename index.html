@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- CRITICAL: This tag forces mobile browsers to scale your Canva embed instead of zooming out -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NoorNestLiving</title>
 
     <style>
-        /* Base styles to prevent horizontal layout breakages */
         html, body { 
             margin: 0; 
             padding: 0; 
@@ -21,17 +19,20 @@
             box-sizing: border-box; 
         }
 
-        /* Target your specific Canva embed container structure */
+        /* Default configuration rule for standard desktop displays */
+        .canva-outer-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
         .canva-container {
             position: relative; 
             width: 100%; 
             height: 0; 
-            padding-top: 281.1127%; /* Default desktop height proportions */
-            padding-bottom: 0; 
+            padding-top: 281.1127%; 
             box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); 
             margin-top: 1.6em; 
             margin-bottom: 0.9em; 
-            overflow: hidden; 
             border-radius: 8px; 
             will-change: transform;
         }
@@ -57,37 +58,43 @@
         }
 
         /* =======================================================
-           MOBILE MOBILE SCREEN CONFIGURATION (< 768px width)
+           ADVANCED TARGET FORCE-SCALE OVERRIDE FOR MOBILE PHONES
            ======================================================= */
-        @media screen and (max-width: 768px) {
-            html, body {
-                height: 100dvh;
+        @media screen and (max-width: 480px) {
+            .canva-outer-wrapper {
                 width: 100vw;
+                height: 90vh;
+                position: relative;
+                overflow: hidden;
             }
 
-            /* Breaks the locked desktop height ratio and adapts layout dynamically */
+            /* Zoom scale to expand the shrinking Canva embed framework */
             .canva-container {
-                height: 90dvh !important; /* Spans almost the full mobile display height */
-                padding-top: 0 !important; /* Completely neutralizes the desktop padding block */
-                margin-top: 0.5em;
-                margin-bottom: 0.5em;
-                border-radius: 0px; /* Removes border roundings to blend cleanly into the screen edge */
+                width: 210% !important; 
+                height: 210% !important; 
+                padding-top: 0 !important;
+                position: absolute;
+                top: -5%;
+                left: -55%; 
+                transform: scale(0.48); 
+                transform-origin: top center;
             }
-
+            
             .canva-container iframe {
-                height: 100% !important;
                 width: 100% !important;
-                object-fit: contain; /* Keeps Canva layouts crisp and beautifully aligned on screens */
+                height: 100% !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Modified Canva Embed Container with Class Assignment -->
-    <div class="canva-container"> 
-        <iframe loading="lazy" src="https://www.canva.com/design/DAHMq9B5miU/izr-0v8MBb_mSiWT741X3Q/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe> 
-    </div> 
+    <!-- Wrapped outer shell handles scaling calculation boundaries -->
+    <div class="canva-outer-wrapper">
+        <div class="canva-container"> 
+            <iframe loading="lazy" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe> 
+        </div> 
+    </div>
     
     <a class="brand-link" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
 
