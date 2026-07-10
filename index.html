@@ -2,28 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Required tag to make mobile screens behave differently than desktop -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoorNestLiving</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Noor Nest Living</title>
 
     <style>
-        /* Base page resets */
+        /* Global Page Resets */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            background-color: #ffffff;
-            font-family: Arial, sans-serif;
+            height: 100%;
+            background-color: #fcfbfa; /* Clean, premium off-white background */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #333;
         }
         * {
             box-sizing: border-box;
         }
 
         /* ========================================================
-           1. DESKTOP VIEW SETTINGS (Hidden on mobile screens)
+           1. DESKTOP VIEW STYLE (Loads on computers)
            ======================================================== */
-        .desktop-only-view {
-            display: block; /* Show on desktop */
+        .desktop-view {
+            display: block;
             width: 100%;
             padding: 20px;
         }
@@ -33,7 +34,7 @@
             width: 100%; 
             height: 0; 
             padding-top: 281.1127%; 
-            box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
             overflow: hidden; 
             border-radius: 8px;
         }
@@ -45,81 +46,111 @@
             left: 0; 
             border: none;
         }
+        .brand-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            text-decoration: none;
+        }
 
         /* ========================================================
-           2. MOBILE VIEW SETTINGS (Hidden on desktop screens)
+           2. MOBILE VIEW STYLE (Loads on phone screens)
            ======================================================== */
-        .mobile-only-view {
-            display: none; /* Hide on desktop by default */
-            padding: 20px;
+        .mobile-view {
+            display: none; /* Hidden on desktop screens */
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
 
-        /* Custom mobile design classes to style your phone layout elements */
-        .mobile-hero-title {
-            font-size: 28px;
-            color: #333333;
-            margin-bottom: 10px;
-        }
-        .mobile-subtitle {
-            font-size: 16px;
-            color: #666666;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-        .mobile-button {
-            display: inline-block;
-            background-color: #000000;
-            color: #ffffff;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            margin-top: 15px;
+        .mobile-card {
+            background: #ffffff;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            max-width: 400px;
+            width: 100%;
         }
 
+        .mobile-logo {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        .mobile-tagline {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .mobile-action-btn {
+            display: block;
+            background-color: #111111;
+            color: #ffffff;
+            padding: 16px 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: background 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
 
         /* ========================================================
-           3. RESPONSIVE BREAKPOINT SWITCH (Kicks in under 768px width)
+           3. RESPONSIVE BREAKPOINT SWITCH (< 768px width)
            ======================================================== */
         @media screen and (max-width: 768px) {
-            /* Wipe out the desktop Canva view on phones completely */
-            .desktop-only-view {
+            /* Deletes the broken canvas layout frame completely on mobile devices */
+            .desktop-view {
                 display: none !important;
             }
 
-            /* Turn on your custom mobile layout on phones */
-            .mobile-only-view {
-                display: block !important;
+            /* Switches over to the clean mobile container layout */
+            .mobile-view {
+                display: flex !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 🌟 THIS CODE LOADS ONLY ON DESKTOP COMPUTERS -->
-    <div class="desktop-only-view">
+    <!-- 💻 DISPLAYED ON DESKTOP COMPUTER MONITORS -->
+    <div class="desktop-view">
         <div class="canva-container"> 
             <iframe loading="lazy" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe> 
         </div> 
-        <a style="display:block; text-align:center; margin-top:10px; color:#000;" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
+        <a class="brand-link" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
     </div>
 
 
-    <!-- 📱 THIS CODE LOADS ONLY ON MOBILE PHONE USERS -->
-    <div class="mobile-only-view">
-        
-        <!-- Add your custom mobile layout headings, images, and text below -->
-        <h1 class="mobile-hero-title">Welcome to Noor Nest Living</h1>
-        <p class="mobile-subtitle">Premium Home Organization Solutions designed to bring comfort and order to your spaces.</p>
-        
-        <!-- Example image template tag for phone screens -->
-        <!-- <img src="your-mobile-image.png" style="width:100%; border-radius:8px;" alt="Mobile Content"> -->
-
-        <a href="https://canva.com" class="mobile-button" target="_blank" rel="noopener">
-            View Full Catalog
-        </a>
-        
+    <!-- 📱 DISPLAYED ON MOBILE PHONE DEVICE SCREENS -->
+    <div class="mobile-view">
+        <div class="mobile-card">
+            
+            <div class="mobile-logo">Noor Nest Living</div>
+            
+            <p class="mobile-tagline">
+                Premium Home Organization Solutions designed to bring comfort and order to your living spaces.
+            </p>
+            
+            <!-- This button opens your catalog links cleanly inside the mobile viewport browser window -->
+            <a href="https://canva.com" class="mobile-action-btn" target="_blank" rel="noopener">
+                View Full Catalog
+            </a>
+            
+        </div>
     </div>
 
 </body>
