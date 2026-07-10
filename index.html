@@ -2,45 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Mandatory tag to make mobile screens behave differently than desktop layouts -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Noor Nest Living</title>
 
     <style>
-        /* Essential structure rules to ensure the website is always visible */
+        /* Base page rules to kill horizontal side-scrolling or window gaps */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            min-height: 100vh;
+            height: 100%;
             background-color: #ffffff !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
+            overflow-x: hidden;
         }
-        
         * {
             box-sizing: border-box;
         }
 
         /* ========================================================
-           UNIFIED RESPONSIVE WRAPPER (Works on Laptop & Phone)
+           1. LAPTOP & DESKTOP STYLING (Default Screen Sizing)
            ======================================================== */
-        .global-canva-wrapper {
+        .canva-iframe-container {
             position: relative;
             width: 100%;
             max-width: 1200px; /* Nicely centers the page content on wide desktop screens */
-            margin: 0 auto;
-            /* Laptop aspect-ratio fallback sizing rule */
-            height: auto;
-            padding-top: 281.1127%; 
+            margin: 20px auto;
+            height: 85vh; /* Standard viewport display box size for laptops */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 12px;
             overflow: hidden;
             display: block !important;
         }
 
-        .global-canva-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .canva-iframe-container iframe {
             width: 100% !important;
             height: 100% !important;
             border: none !important;
@@ -50,34 +45,39 @@
         }
 
         /* ========================================================
-           AUTOMATED PHONE SCALE RULES (< 768px screen width)
+           2. MOBILE DEVICE OVERRIDES (< 768px Screen Width)
            ======================================================== */
         @media screen and (max-width: 768px) {
             html, body {
-                overflow-x: hidden !important;
-            }
-
-            .global-canva-wrapper {
-                /* Destroys the desktop ratio compression rule so it doesn't shrink into an icon */
-                padding-top: 0 !important; 
-                height: 100vh !important; /* Forces the box to take up the full phone screen height */
+                height: 100dvh !important; /* Forces layout to fill dynamic mobile views */
                 width: 100vw !important;
+                overflow: hidden !important; 
+                position: fixed; /* Blocks background screen shifts */
             }
 
-            .global-canva-wrapper iframe {
-                position: relative !important;
+            /* Overwrites the fixed height block so it spreads fullscreen on phones */
+            .canva-iframe-container {
+                height: 100dvh !important; 
+                width: 100vw !important;
+                max-width: 100vw !important;
+                margin: 0 !important;
+                border-radius: 0px !important;
+                box-shadow: none !important;
+            }
+
+            /* Configures the iframe to fill out the Vercel mobile viewport neatly */
+            .canva-iframe-container iframe {
                 height: 100% !important;
                 width: 100% !important;
-                object-fit: contain !important; /* Aligns the presentation perfectly within the mobile display bounds */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Single, robust structure that loads on all devices without separate hide conditions -->
-    <div class="global-canva-wrapper">
-        <iframe loading="eager" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+    <!-- Pure, scriptless container structure that avoids server security blockages -->
+    <div class="canva-iframe-container">
+        <iframe src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
     </div>
 
 </body>
