@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- REQUIRED MOBILE VIEWPORT: Forces phone browsers to display elements correctly -->
+    <!-- Mandatory Mobile Viewport Tag: Tells mobile browsers how to scale layout views -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="I-erUxWDzpgBL13BJn2RI84ISC43XRahowE57j0ZWQk">
     <meta name="robots" content="index, follow" />
@@ -34,14 +34,14 @@
     <meta property="og:url" content="https://vercel.app">
 
     <style>
-        /* Base page rules to kill horizontal side-scrolling or window gaps */
+        /* Base configuration layout rules to prevent screen breaks */
         html, body { 
             margin: 0; 
             padding: 0; 
             width: 100%; 
             height: 100%; 
             background: #ffffff !important; 
-            overflow: hidden;
+            overflow-x: hidden;
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
@@ -65,19 +65,25 @@
         .canva-responsive-wrapper { 
             position: relative; 
             width: 100%; 
-            height: 85vh; /* Sets a premium, visible desktop framing box for laptops */
-            max-width: 1300px;
-            margin: 30px auto;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.06); 
+            height: 0; 
+            padding-top: 281.1127%; /* Your exact desktop aspect ratio parameter */
+            padding-bottom: 0; 
+            box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); 
+            margin-top: 1.6em; 
+            margin-bottom: 0.9em; 
             overflow: hidden; 
-            border-radius: 12px; 
+            border-radius: 8px; 
+            will-change: transform;
             display: block !important;
             visibility: visible !important;
         }
         
         .canva-responsive-wrapper iframe { 
-            width: 100% !important; 
-            height: 100% !important;
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
             display: block !important;
             visibility: visible !important;
         }
@@ -97,16 +103,17 @@
         @media (max-width: 768px) { 
             html, body { 
                 overflow: hidden !important; 
-                height: 100dvh !important; /* Locks screen limits perfectly on dynamic mobile viewports */
+                height: 100dvh !important;
                 width: 100vw !important;
-                position: fixed; /* Prevents mobile browser scrolling window bugs */
+                position: fixed; /* Prevents mobile browser gapping */
             } 
             
-            /* Eliminates the desktop height container compression block completely on phones */
+            /* Eliminates the desktop vertical padding compression block on cell phones */
             .canva-responsive-wrapper {
                 height: 100dvh !important;
                 width: 100vw !important;
                 max-width: 100vw !important;
+                padding-top: 0 !important; 
                 margin: 0 !important;
                 border-radius: 0px !important;
                 box-shadow: none !important;
@@ -117,7 +124,7 @@
                 width: 100% !important;
             } 
             
-            /* Hide the extra desktop branding hyperlink text on mobile viewports */
+            /* Clean out extra desktop text spaces on phone display layers */
             .brand-link {
                 display: none !important;
             }
@@ -126,9 +133,9 @@
 </head>
 <body>
 
-    <!-- Direct, scriptless iframe layout container to avoid Vercel security blockers -->
+    <!-- Target Canva Container with verified embed layout parameters -->
     <div class="canva-responsive-wrapper">
-        <iframe loading="eager" src="https://canva.com" allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe>
+        <iframe loading="lazy" src="https://www.canva.com/design/DAHMq9B5miU/izr-0v8MBb_mSiWT741X3Q/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe>
     </div>
     
     <a class="brand-link" href="https://canva.com" target="_blank" rel="noopener">NoorNestLiving</a>
@@ -159,7 +166,7 @@
         })();
     </script>
 
-    <!-- Content Animation Node Controller Hook -->
+    <!-- Animation Node Trigger Hook -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const animated = document.querySelectorAll( '[data-aos],.animate,.animated' );
